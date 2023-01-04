@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ToolbarStyle">
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="ToolbarTitleStyle">
+        <item name="android:textSize">@dimen/toolbar_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:fontFamily">@font/boogaloo_regular</item>
+    </style>
+</resources>
