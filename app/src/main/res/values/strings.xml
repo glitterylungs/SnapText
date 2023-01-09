@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">SnapText</string>
     <string name="camera">Camera</string>
+    <string name="camera_data_error">Problem with getting data from the camera. Please try again.</string>
+    <string name="detect_text_error">Problem with detecting text. Please try again.</string>
+    <string name="no_text_to_detect">There is no text to detect. Make sure that text is clearly visible.</string>
+    <string name="no_camera_permission">You have denied camera permission.</string>
+    <string name="alert_dialog_message">It looks like you have turned off permissions required for that feature. It can be enable under app settings.</string>
+    <string name="go_to_settings">GO TO SETTINGS</string>
+    <string name="cancel">CANCEL</string>
 </resources>

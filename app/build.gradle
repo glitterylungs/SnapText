@@ -21,6 +21,10 @@ android {
         viewBinding true
     }
 
+    dataBinding {
+        enabled true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -41,6 +45,26 @@ dependencies {
     //navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+
+    //permissions
+    implementation 'com.karumi:dexter:6.2.2'
+
+    //coil
+    implementation 'io.coil-kt:coil:1.1.1'
+
+    //ml kit
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:18.0.2'
+
+    //koin
+    implementation 'io.insert-koin:koin-android:3.3.2'
+
+    //coroutine
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4'
+
+
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha03'
+    implementation "androidx.fragment:fragment-ktx:1.6.0-alpha04"
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
