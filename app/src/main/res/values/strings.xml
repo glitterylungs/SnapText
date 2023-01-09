@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SnapText</string>
+    <string name="start_view_image">Start View Image</string>
 </resources>
