@@ -1,6 +1,7 @@
 package com.example.snaptext
 
 import android.app.Application
+import com.example.snaptext.modules.databaseModule
 import com.example.snaptext.modules.machineLearningModule
 import com.example.snaptext.modules.providersModule
 import com.example.snaptext.modules.viewModelsModule
@@ -19,7 +20,8 @@ class MainApplication : Application() {
             modules(
                 machineLearningModule,
                 viewModelsModule,
-                providersModule
+                providersModule,
+                databaseModule
             )
         }
     }
