@@ -21,7 +21,9 @@ val viewModelsModule = module {
     viewModel {
         TranslatorViewModel(
             textDetector = get(),
-            toastProvider = get()
+            toastProvider = get(),
+            languageDetector = get(),
+            translationModel = get()
         )
     }
 }
