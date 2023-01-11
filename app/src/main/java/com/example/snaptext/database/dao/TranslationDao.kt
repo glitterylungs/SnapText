@@ -2,13 +2,13 @@ package com.example.snaptext.database.dao
 
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.snaptext.database.models.Translation
+import com.example.snaptext.database.models.TranslationDb
 
-interface TranslationDao {
+internal interface TranslationDao {
 
     @Query("SELECT * FROM translation WHERE id = :id")
-    fun getTranslation(id: Int): Translation
+    fun getTranslation(id: Int): TranslationDb
 
     @Insert
-    fun insertTranslation(translation: Translation)
+    fun insertTranslation(translationDb: TranslationDb)
 }
