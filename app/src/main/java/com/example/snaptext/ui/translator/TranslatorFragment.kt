@@ -34,6 +34,7 @@ class TranslatorFragment : Fragment() {
         if (byteArray != null) {
             val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
             viewModel.detectText(bitmap)
+//            viewModel.detectLanguage()
         } else {
             viewModel.showMessage(R.string.camera_data_error)
         }
