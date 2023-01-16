@@ -1,18 +1,19 @@
 package com.example.snaptext.modules
 
-import com.example.snaptext.mappers.TranslationDbMapper
-import com.example.snaptext.mappers.TranslationDbMapperImpl
-import com.example.snaptext.mappers.TranslationMapper
-import com.example.snaptext.mappers.TranslationMapperImpl
+import com.example.snaptext.mappers.*
 import org.koin.dsl.module
 
 val mappersModule = module {
 
-    single<TranslationMapper> {
-        TranslationMapperImpl()
+    single<TranslationDbToRepositoryMapper> {
+        TranslationDbToRepositoryMapperImpl()
     }
 
-    single<TranslationDbMapper> {
-        TranslationDbMapperImpl()
+    single<TranslationRepositoryToDbMapper> {
+        TranslationRepositoryToDbMapperImpl()
+    }
+
+    single<TranslationRepositoryToDomainMapper> {
+        TranslationRepositoryToDomainMapperImpl()
     }
 }

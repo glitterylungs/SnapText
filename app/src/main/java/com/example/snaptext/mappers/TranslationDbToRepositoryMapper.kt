@@ -3,9 +3,9 @@ package com.example.snaptext.mappers
 import com.example.snaptext.database.models.TranslationDb
 import com.example.snaptext.repositories.models.Translation
 
-internal interface TranslationMapper : Mapper<TranslationDb, Translation>
+internal interface TranslationDbToRepositoryMapper : Mapper<TranslationDb, Translation>
 
-internal class TranslationMapperImpl : TranslationMapper {
+internal class TranslationDbToRepositoryMapperImpl : TranslationDbToRepositoryMapper {
 
     override fun map(input: TranslationDb): Translation =
         Translation(

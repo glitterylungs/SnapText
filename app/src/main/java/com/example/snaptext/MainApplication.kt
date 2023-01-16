@@ -20,7 +20,8 @@ class MainApplication : Application() {
                 providersModule,
                 databaseModule,
                 repositoriesModule,
-                mappersModule
+                mappersModule,
+                useCasesModule
             )
         }
     }

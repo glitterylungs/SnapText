@@ -9,8 +9,8 @@ val repositoriesModule = module {
     single<TranslationRepository> {
         TranslationRepositoryImpl(
             translationDao = get(),
-            translationMapper = get(),
-            translationDbMapper = get()
+            translationDbToRepositoryMapper = get(),
+            translationRepositoryToDbMapper = get()
         )
     }
 }
