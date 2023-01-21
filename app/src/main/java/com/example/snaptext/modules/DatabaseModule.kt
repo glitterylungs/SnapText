@@ -7,6 +7,8 @@ import com.example.snaptext.database.dao.TranslationDao
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
+private const val DB_NAME = "app_database"
+
 val databaseModule = module {
 
     single {
@@ -19,7 +21,7 @@ val databaseModule = module {
 }
 
 private fun provideAppDatabase(application: Application): AppDatabase =
-    Room.databaseBuilder(application, AppDatabase::class.java, "APPDB")
+    Room.databaseBuilder(application, AppDatabase::class.java, DB_NAME)
         .fallbackToDestructiveMigration()
         .build()
 

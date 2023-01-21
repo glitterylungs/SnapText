@@ -11,9 +11,14 @@ internal class TranslationRepositoryImpl(
     private val translationRepositoryToDbMapper: TranslationRepositoryToDbMapper
 ) : TranslationRepository {
 
+    override suspend fun getTranslations(): List<Translation> =
+        translationDao.getTranslations().map {
+            translationDbToRepositoryMapper.map(it)
+        }
+
     override suspend fun getTranslation(id: Int): Translation =
         translationDbToRepositoryMapper.map(translationDao.getTranslation(id))
 
-    override suspend fun insertTranslation(translation: Translation): Unit =
+    override suspend fun addTranslation(translation: Translation): Unit =
         translationDao.insertTranslation(translationRepositoryToDbMapper.map(translation))
 }

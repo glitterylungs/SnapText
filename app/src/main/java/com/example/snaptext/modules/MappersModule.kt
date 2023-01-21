@@ -16,4 +16,8 @@ val mappersModule = module {
     single<TranslationRepositoryToDomainMapper> {
         TranslationRepositoryToDomainMapperImpl()
     }
+
+    single<TranslationDomainToRepositoryMapper> {
+        TranslationDomainToRepositoryMapperImpl()
+    }
 }
