@@ -14,4 +14,5 @@
     <string name="text_to_translate_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
     <string name="spanish_placeholder">Spanish</string>
     <string name="polish_placeholder">Polish</string>
+    <string name="start_view_image_description">Start View Image</string>
 </resources>
