@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="yellow">#F0C419</color>
     <color name="text_color">#4D525C</color>
+    <color name="body_text_color">#424852</color>
+    <color name="slider_text_color">#325E85</color>
     <color name="background">#F6F4EB</color>
 </resources>
