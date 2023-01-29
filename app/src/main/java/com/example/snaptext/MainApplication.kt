@@ -21,6 +21,10 @@ class MainApplication : Application() {
                 machineLearningModule,
                 viewModelsModule,
                 providersModule,
+                databaseModule,
+                repositoriesModule,
+                mappersModule,
+                useCasesModule
                 translationModule
             )
         }
