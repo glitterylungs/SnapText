@@ -11,8 +11,8 @@
     <string name="translate_button">Translate</string>
     <string name="arrow_to_right">Arrow Right</string>
     <string name="arrow_to_left">Arrow Left</string>
-    <string name="text_to_translate_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
-    <string name="spanish_placeholder">Spanish</string>
-    <string name="polish_placeholder">Polish</string>
     <string name="start_view_image_description">Start View Image</string>
+    <string name="language_not_recognized">Couldn\'t detect language</string>
+    <string name="detect_language_error">Problem with detecting language. Please try again.</string>
+    <string name="try_again">Please try again.</string>
 </resources>

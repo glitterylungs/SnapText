@@ -11,7 +11,6 @@ import com.example.snaptext.languagedetection.LanguageDetector
 import com.example.snaptext.providers.ToastProvider
 import com.example.snaptext.textdetection.TextDetector
 import com.example.snaptext.translationmodel.TranslationModel
-import com.google.mlkit.nl.translate.TranslateLanguage
 import com.google.mlkit.nl.translate.Translator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -35,18 +34,21 @@ internal class TranslatorViewModel(
     val sourceLanguage: LiveData<String>
         get() = _sourceLanguage
 
-    lateinit var sourceLanguageCode: String
-    lateinit var targetLanguageCode: String
-    lateinit var translator: Translator
+    val targetLanguage = MutableLiveData<String>(codeToLanguage["pl"])
+
+    private var sourceLanguageCode: String? = null
+    private val targetLanguageCode = codeToLanguage.entries.find {
+        it.value == targetLanguage.value
+    }?.key
+    private var translator: Translator? = null
 
     fun detectText(bitmap: Bitmap) =
         viewModelScope.launch(Dispatchers.IO) {
-            detectLanguage()
             textDetector.detectText(bitmap)
                 .addOnSuccessListener {
                     if (it.text != "") {
                         _textToTranslate.value = it.text
-                        detectLanguage() // tymczasowo tu
+                        detectLanguage()
                     } else {
                         showMessage(R.string.no_text_to_detect)
                     }
@@ -54,102 +56,108 @@ internal class TranslatorViewModel(
                 .addOnFailureListener {
                     showMessage(R.string.detect_text_error)
                 }
-
         }
+
+    private fun detectLanguage() =
+        viewModelScope.launch(Dispatchers.IO) {
+            languageDetector.detectLanguage(_textToTranslate.value!!)
+                .addOnSuccessListener { languageCode ->
+                    if (languageCode == "und" || languageCode == "el-Latn") {
+                        _sourceLanguage.value = "NaN"
+                        showMessage(R.string.language_not_recognized)
+                    } else {
+                        _sourceLanguage.value = codeToLanguage[languageCode]
+                        sourceLanguageCode = languageCode
+                    }
+                }
+                .addOnFailureListener {
+                    showMessage(R.string.detect_language_error)
+                }
+        }
+
+    fun translate() {
+        if (_textToTranslate.value != "" && _sourceLanguage.value != "") {
+            viewModelScope.launch(Dispatchers.IO) {
+                translator = targetLanguageCode?.let { targetCode ->
+                    sourceLanguageCode?.let { sourceCode ->
+                        translationModel.prepareTranslationModel(sourceCode, targetCode)
+                    }
+                }
+                translator?.downloadModelIfNeeded()?.addOnSuccessListener {
+                    translator?.translate(_textToTranslate.value!!)?.addOnSuccessListener {
+                        _translatedText.value = it
+                    }
+                }
+            }
+        } else {
+            showMessage(R.string.try_again)
+        }
+    }
 
     fun showMessage(@StringRes message: Int) =
         toastProvider.showToast(message)
 
-    private fun detectLanguage() {
-        viewModelScope.launch(Dispatchers.IO) {
-            languageDetector.detectLanguage(_textToTranslate.value!!)
-                .addOnSuccessListener { languageCode ->
-                    if (languageCode == "und") {
-                        _sourceLanguage.value = "Couldn't detect language"
-                    } else {
-                        _sourceLanguage.value = languageCodeToLanguage(languageCode)
-                        sourceLanguageCode = languageCode
-                    }
-                }
-        }
-    }
-
-    fun translate() {
-        viewModelScope.launch(Dispatchers.IO) {
-            translator = translationModel.prepareTranslationModel(
-                sourceLanguageCode,
-                TranslateLanguage.POLISH // <------
-            )
-            translator.downloadModelIfNeeded().addOnSuccessListener {
-                translator.translate(_textToTranslate.value!!).addOnSuccessListener {
-                    _translatedText.value = it
-                }
-            }
-        }
-    }
-
-    private fun languageCodeToLanguage(languageCode: String): String {
-        return when (languageCode) {
-            "en" -> "English"
-            "af" -> "Afrikaans"
-            "sq" -> "Albanian"
-            "ar" -> "Arabic"
-            "be" -> "Belarusian"
-            "bg" -> "Bulgarian"
-            "bn" -> "Bengali"
-            "ca" -> "Catalan"
-            "zh" -> "Chinese"
-            "hr" -> "Croatian"
-            "cs" -> "Czech"
-            "da" -> "Danish"
-            "nl" -> "Dutch"
-            "eo" -> "Esperanto"
-            "et" -> "Estonian"
-            "fi" -> "Finnish"
-            "fr" -> "French"
-            "gl" -> "Galician"
-            "ka" -> "Georgian"
-            "de" -> "German"
-            "el" -> "Greek"
-            "gu" -> "Gujarati"
-            "ht" -> "Hitian Creole"
-            "he" -> "Hebrew"
-            "hi" -> "Hindi"
-            "hu" -> "Hungarian"
-            "is" -> "Icelandic"
-            "id" -> "Indonesian"
-            "ga" -> "Irish"
-            "it" -> "Italian"
-            "ja" -> "Japanese"
-            "kn" -> "Kannada"
-            "ko" -> "Korean"
-            "lt" -> "Lithuanian"
-            "lv" -> "Latvian"
-            "mk" -> "Macedonian"
-            "mr" -> "Marathi"
-            "ms" -> "Malay"
-            "mt" -> "Maltese"
-            "no" -> "Norwegian"
-            "fa" -> "Persian"
-            "pl" -> "Polish"
-            "pt" -> "Portuguese"
-            "ro" -> "Romanian"
-            "ru" -> "Russian"
-            "sk" -> "Slovak"
-            "sl" -> "Slovenian"
-            "es" -> "Spanish"
-            "sv" -> "Swedish"
-            "sw" -> "Swahili"
-            "tl" -> "Tagalog"
-            "ta" -> "Tamil"
-            "te" -> "Telugu"
-            "th" -> "Thai"
-            "tr" -> "Turkish"
-            "uk" -> "Ukrainian"
-            "ur" -> "Urdu"
-            "vi" -> "Vietnamese"
-            "cy" -> "Welsh"
-            else -> "Couldn't detect language"
-        }
+    companion object {
+        val codeToLanguage = mapOf(
+            "en" to "English",
+            "af" to "Afrikaans",
+            "sq" to "Albanian",
+            "ar" to "Arabic",
+            "be" to "Belarusian",
+            "bg" to "Bulgarian",
+            "bn" to "Bengali",
+            "ca" to "Catalan",
+            "zh" to "Chinese",
+            "hr" to "Croatian",
+            "cs" to "Czech",
+            "da" to "Danish",
+            "nl" to "Dutch",
+            "eo" to "Esperanto",
+            "et" to "Estonian",
+            "fi" to "Finnish",
+            "fr" to "French",
+            "gl" to "Galician",
+            "ka" to "Georgian",
+            "de" to "German",
+            "el" to "Greek",
+            "gu" to "Gujarati",
+            "ht" to "Hitian Creole",
+            "he" to "Hebrew",
+            "hi" to "Hindi",
+            "hu" to "Hungarian",
+            "is" to "Icelandic",
+            "id" to "Indonesian",
+            "ga" to "Irish",
+            "it" to "Italian",
+            "ja" to "Japanese",
+            "kn" to "Kannada",
+            "ko" to "Korean",
+            "lt" to "Lithuanian",
+            "lv" to "Latvian",
+            "mk" to "Macedonian",
+            "mr" to "Marathi",
+            "ms" to "Malay",
+            "mt" to "Maltese",
+            "no" to "Norwegian",
+            "fa" to "Persian",
+            "pl" to "Polish",
+            "pt" to "Portuguese",
+            "ro" to "Romanian",
+            "ru" to "Russian",
+            "sk" to "Slovak",
+            "sl" to "Slovenian",
+            "es" to "Spanish",
+            "sv" to "Swedish",
+            "sw" to "Swahili",
+            "tl" to "Tagalog",
+            "ta" to "Tamil",
+            "te" to "Telugu",
+            "th" to "Thai",
+            "tr" to "Turkish",
+            "uk" to "Ukrainian",
+            "ur" to "Urdu",
+            "vi" to "Vietnamese",
+            "cy" to "Welsh"
+        )
     }
 }
