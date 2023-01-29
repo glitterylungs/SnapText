@@ -12,7 +12,7 @@
         <item name="android:fontFamily">@font/boogaloo_regular</item>
     </style>
 
-    <style name="TextToTranslateStyle">
+    <style name="MainTextStyle">
         <item name="android:textSize">@dimen/text_to_translate_size</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/body_text_color</item>
@@ -26,7 +26,7 @@
         <item name="android:fontFamily">@font/boogaloo_regular</item>
     </style>
 
-    <style name="TranslateButtonStyle">
+    <style name="MainButtonStyle">
         <item name="android:textSize">@dimen/language_text_size</item>
         <item name="android:textColor">@color/body_text_color</item>
         <item name="android:fontFamily">@font/boogaloo_regular</item>

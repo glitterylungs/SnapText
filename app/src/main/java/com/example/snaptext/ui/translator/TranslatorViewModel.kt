@@ -11,11 +11,14 @@ import com.example.snaptext.languagedetection.LanguageDetector
 import com.example.snaptext.providers.ToastProvider
 import com.example.snaptext.textdetection.TextDetector
 import com.example.snaptext.translationmodel.TranslationModel
+import com.example.snaptext.usecases.AddTranslationUseCase
+import com.example.snaptext.usecases.models.Translation
 import com.google.mlkit.nl.translate.Translator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 internal class TranslatorViewModel(
+    private val addTranslationUseCase: AddTranslationUseCase,
     private val textDetector: TextDetector,
     private val toastProvider: ToastProvider,
     private val languageDetector: LanguageDetector,
@@ -91,6 +94,18 @@ internal class TranslatorViewModel(
             }
         } else {
             showMessage(R.string.try_again)
+        }
+    }
+
+    fun addTranslation() {
+        val translation = Translation(
+            textBefore = textToTranslate.value,
+            languageBefore = sourceLanguage.value,
+            textAfter = translatedText.value,
+            languageAfter = targetLanguage.value
+        )
+        viewModelScope.launch(Dispatchers.IO) {
+            addTranslationUseCase.addTranslation(translation)
         }
     }
 

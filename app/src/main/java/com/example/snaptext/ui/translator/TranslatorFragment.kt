@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.snaptext.R
 import com.example.snaptext.databinding.FragmentTranslatorBinding
+import com.example.snaptext.providers.DialogProvider
 import com.example.snaptext.ui.translator.TranslatorViewModel.Companion.codeToLanguage
 import org.koin.android.ext.android.inject
 
@@ -16,6 +17,7 @@ class TranslatorFragment : Fragment() {
     private var _binding: FragmentTranslatorBinding? = null
     private val binding get() = _binding!!
     private val viewModel: TranslatorViewModel by inject()
+    private val dialogProvider: DialogProvider by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -30,14 +32,20 @@ class TranslatorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.languagesSpinner.languages = codeToLanguage.values.toList()
-
         val byteArray = arguments?.getByteArray(IMAGE_BYTE_ARRAY)
         if (byteArray != null) {
             val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
             viewModel.detectText(bitmap)
         } else {
             viewModel.showMessage(R.string.camera_data_error)
+        }
+
+        binding.languagesSpinner.languages = codeToLanguage.values.toList()
+
+        viewModel.translatedText.observe(viewLifecycleOwner) {
+            dialogProvider.showTranslatedTextDialog(parentFragmentManager, it) {
+                viewModel.addTranslation()
+            }
         }
     }
 
