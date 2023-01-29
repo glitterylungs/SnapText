@@ -13,6 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background"
         android:gravity="center_horizontal|fill_vertical"
         android:orientation="vertical"
         android:padding="20dp"
@@ -20,7 +21,7 @@
 
         <TextView
             android:id="@+id/textView"
-            style="@style/TextToTranslateStyle"
+            style="@style/MainTextStyle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
@@ -98,7 +99,7 @@
 
         <Button
             android:id="@+id/button"
-            style="@style/TranslateButtonStyle"
+            style="@style/MainButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#F0C419"
