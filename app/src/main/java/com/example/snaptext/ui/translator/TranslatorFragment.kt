@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.snaptext.R
 import com.example.snaptext.databinding.FragmentTranslatorBinding
+import com.example.snaptext.ui.translator.TranslatorViewModel.Companion.codeToLanguage
 import org.koin.android.ext.android.inject
 
 class TranslatorFragment : Fragment() {
@@ -20,7 +20,7 @@ class TranslatorFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_translator, container, false)
+        _binding = FragmentTranslatorBinding.inflate(inflater, container, false)
         return binding.apply {
             viewModel = this@TranslatorFragment.viewModel
             lifecycleOwner = viewLifecycleOwner
@@ -29,6 +29,8 @@ class TranslatorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.languagesSpinner.languages = codeToLanguage.values.toList()
 
         val byteArray = arguments?.getByteArray(IMAGE_BYTE_ARRAY)
         if (byteArray != null) {

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="toolbar_title_text_size">22sp</dimen>
+    <dimen name="text_to_translate_size">26sp</dimen>
+    <dimen name="language_text_size">34sp</dimen>
+    <dimen name="spinner_item_horizontal_padding">5dp</dimen>
+    <dimen name="spinner_width">180dp</dimen>
+    <dimen name="spinner_horizontal_margin">5dp</dimen>
 </resources>
