@@ -20,9 +20,8 @@
         android:contentDescription="@string/dismiss"
         android:src="@drawable/ic_close" />
 
-
     <TextView
-        android:id="@+id/translatedText"
+        android:id="@+id/dialogText"
         style="@style/MainTextStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

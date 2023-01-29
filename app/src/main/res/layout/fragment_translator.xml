@@ -78,7 +78,6 @@
                     android:spinnerMode="dropdown"
                     app:selectedLanguage="@={viewModel.targetLanguage}" />
 
-
             </TableRow>
 
             <TableRow
@@ -98,7 +97,7 @@
         </TableLayout>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/translateButton"
             style="@style/MainButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
