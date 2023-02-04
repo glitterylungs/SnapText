@@ -40,9 +40,9 @@ internal class TranslatorViewModel(
     val targetLanguage = MutableLiveData<String>(codeToLanguage["pl"])
 
     private var sourceLanguageCode: String? = null
-    private val targetLanguageCode = codeToLanguage.entries.find {
+    private val targetLanguageCode = MutableLiveData<String>(codeToLanguage.entries.find {
         it.value == targetLanguage.value
-    }?.key
+    }?.key)
     private var translator: Translator? = null
 
     fun detectText(bitmap: Bitmap) =
@@ -81,7 +81,7 @@ internal class TranslatorViewModel(
     fun translate() {
         if (_textToTranslate.value != "" && _sourceLanguage.value != "") {
             viewModelScope.launch(Dispatchers.IO) {
-                translator = targetLanguageCode?.let { targetCode ->
+                translator = targetLanguageCode.value?.let { targetCode ->
                     sourceLanguageCode?.let { sourceCode ->
                         translationModel.prepareTranslationModel(sourceCode, targetCode)
                     }
@@ -99,13 +99,14 @@ internal class TranslatorViewModel(
 
     fun addTranslation() {
         val translation = Translation(
+            id = DEFAULT_ID,
             textBefore = textToTranslate.value,
             languageBefore = sourceLanguage.value,
             textAfter = translatedText.value,
             languageAfter = targetLanguage.value
         )
         viewModelScope.launch(Dispatchers.IO) {
-            addTranslationUseCase.addTranslation(translation)
+            addTranslationUseCase.execute(translation)
         }
     }
 
@@ -113,6 +114,9 @@ internal class TranslatorViewModel(
         toastProvider.showToast(message)
 
     companion object {
+
+        private const val DEFAULT_ID = 0
+
         val codeToLanguage = mapOf(
             "en" to "English",
             "af" to "Afrikaans",

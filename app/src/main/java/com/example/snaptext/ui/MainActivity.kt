@@ -16,6 +16,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.snaptext.R
 import com.example.snaptext.databinding.ActivityMainBinding
+import com.example.snaptext.ui.translationlist.TranslationListFragment
 import com.example.snaptext.ui.translator.TranslatorFragment
 import com.example.snaptext.ui.translator.TranslatorFragment.Companion.IMAGE_BYTE_ARRAY
 import com.karumi.dexter.Dexter
@@ -72,6 +73,13 @@ internal class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.camera -> {
             checkCameraPermission()
+            true
+        }
+        R.id.history -> {
+            val translationListFragment = TranslationListFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment_container, translationListFragment)
+                .commit()
             true
         }
         else -> super.onOptionsItemSelected(item)

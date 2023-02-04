@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SnapText</string>
     <string name="camera">Camera</string>
+    <string name="history">History</string>
     <string name="camera_data_error">Problem with getting data from the camera. Please try again.</string>
     <string name="detect_text_error">Problem with detecting text. Please try again.</string>
     <string name="no_text_to_detect">There is no text to detect. Make sure that text is clearly visible.</string>

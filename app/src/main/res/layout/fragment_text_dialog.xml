@@ -21,7 +21,25 @@
         android:src="@drawable/ic_close" />
 
     <TextView
-        android:id="@+id/dialogText"
+        android:id="@+id/firstLabelText"
+        style="@style/MainTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/firstText"
+        style="@style/MainTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/secondLabelText"
+        style="@style/MainTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/secondText"
         style="@style/MainTextStyle"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -11,6 +11,7 @@ object BindingAdapters {
     @BindingAdapter("selectedLanguage")
     fun setSelectedLanguage(languageSpinner: LanguageSpinner, newSelectedLanguage: String) {
         if (languageSpinner.selectedLanguage != newSelectedLanguage) {
+            println(newSelectedLanguage)
             languageSpinner.selectedLanguage = newSelectedLanguage
         }
     }
