@@ -9,6 +9,7 @@ internal class TranslationDbToRepositoryMapperImpl : TranslationDbToRepositoryMa
 
     override fun map(input: TranslationDb): Translation =
         Translation(
+            id = input.id,
             textBefore = input.textBefore,
             languageBefore = input.languageBefore,
             textAfter = input.textAfter,

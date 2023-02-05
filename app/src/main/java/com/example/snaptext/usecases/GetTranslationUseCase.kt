@@ -6,7 +6,7 @@ import com.example.snaptext.usecases.models.Translation
 
 internal interface GetTranslationUseCase {
 
-    suspend fun getTranslation(id: Int): Translation
+    suspend fun execute(id: Int): Translation
 }
 
 internal class GetTranslationUseCaseImpl(
@@ -14,6 +14,6 @@ internal class GetTranslationUseCaseImpl(
     private val translationRepositoryToDomainMapper: TranslationRepositoryToDomainMapper
 ) : GetTranslationUseCase {
 
-    override suspend fun getTranslation(id: Int): Translation =
+    override suspend fun execute(id: Int): Translation =
         translationRepositoryToDomainMapper.map(translationRepository.getTranslation(id))
 }

@@ -10,6 +10,7 @@ internal class TranslationRepositoryToDomainMapperImpl : TranslationRepositoryTo
 
     override fun map(input: TranslationRepositoryModel): Translation =
         Translation(
+            id = input.id,
             textBefore = input.textBefore,
             languageBefore = input.languageBefore,
             textAfter = input.textAfter,

@@ -3,6 +3,7 @@ package com.example.snaptext.ui.dialogs
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
@@ -32,18 +33,36 @@ class TextDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.run {
-            dialogText.text = arguments?.getString(TEXT)
+            arguments?.getString(FIRST_LABEL_TEXT)?.let {
+                firstLabelText.text = it
+            } ?: run { firstLabelText.visibility = GONE }
+
+            arguments?.getString(FIRST_TEXT)?.let {
+                firstText.text = it
+            } ?: run { firstText.visibility = GONE }
+
+            arguments?.getString(SECOND_LABEL_TEXT)?.let {
+                secondLabelText.text = it
+            } ?: run { secondLabelText.visibility = GONE }
+
+            arguments?.getString(SECOND_TEXT)?.let {
+                secondText.text = it
+            } ?: run { secondText.visibility = GONE }
+
             dismissButton.setOnClickListener {
                 actionListener?.onDismiss()
                 dismiss()
             }
-            acceptButton.run {
-                text = arguments?.getString(ACCEPT_BUTTON_TEXT)
-                setOnClickListener {
-                    actionListener?.onAccept()
-                    dismiss()
+
+            arguments?.getString(ACCEPT_BUTTON_TEXT)?.let {
+                acceptButton.run {
+                    text = arguments?.getString(ACCEPT_BUTTON_TEXT)
+                    setOnClickListener {
+                        actionListener?.onAccept()
+                        dismiss()
+                    }
                 }
-            }
+            } ?: run { acceptButton.visibility = GONE }
         }
     }
 
@@ -53,18 +72,28 @@ class TextDialogFragment : DialogFragment() {
     }
 
     companion object {
-        private const val TEXT = "text"
+        private const val FIRST_LABEL_TEXT = "first_label_text"
+        private const val FIRST_TEXT = "first_text"
+        private const val SECOND_LABEL_TEXT = "second_label_text"
+        private const val SECOND_TEXT = "second_text"
         private const val ACCEPT_BUTTON_TEXT = "accept_text"
-        const val SHOW_TEXT_DIALOG_TAG = "text_dialog"
+        const val SHOW_TRANSLATED_TEXT_DIALOG_TAG = "translated_text_dialog"
+        const val SHOW_TRANSLATION_DETAILS_DIALOG_TAG = "translation_details_dialog"
 
         fun newInstance(
-            text: String,
-            acceptButtonText: String,
+            firstLabelText: String?,
+            firstText: String?,
+            secondLabelText: String?,
+            secondText: String?,
+            acceptButtonText: String?,
             actionListener: ActionListener
         ): TextDialogFragment =
             TextDialogFragment().apply {
                 arguments = bundleOf(
-                    TEXT to text,
+                    FIRST_LABEL_TEXT to firstLabelText,
+                    FIRST_TEXT to firstText,
+                    SECOND_LABEL_TEXT to secondLabelText,
+                    SECOND_TEXT to secondText,
                     ACCEPT_BUTTON_TEXT to acceptButtonText
                 )
                 this.actionListener = actionListener

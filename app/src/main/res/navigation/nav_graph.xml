@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_startFragment_to_translatorFragment"
             app:destination="@id/translatorFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_translationListFragment2"
+            app:destination="@id/translationListFragment2" />
     </fragment>
     <fragment
         android:id="@+id/translatorFragment"
         android:name="com.example.snaptext.ui.translator.TranslatorFragment"
         android:label="fragment_translator"
         tools:layout="@layout/fragment_translator" />
+    <fragment
+        android:id="@+id/translationListFragment2"
+        android:name="com.example.snaptext.ui.translationlist.TranslationListFragment"
+        android:label="fragment_translation_list"
+        tools:layout="@layout/fragment_translation_list" />
 </navigation>
