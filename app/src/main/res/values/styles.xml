@@ -47,4 +47,23 @@
         <item name="android:popupBackground">@color/background</item>
     </style>
 
+    <style name="LabelStyle">
+        <item name="android:textSize">@dimen/list_label_text_size</item>
+        <item name="android:textColor">@color/body_text_color</item>
+        <item name="android:fontFamily">@font/boogaloo_regular</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ListTextStyle">
+        <item name="android:textSize">@dimen/list_text_size</item>
+        <item name="android:textColor">@color/body_text_color</item>
+        <item name="android:fontFamily">@font/boogaloo_regular</item>
+    </style>
+
+    <style name="AppTheme.Dialog.MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+    </style>
+
 </resources>
