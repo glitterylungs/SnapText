@@ -31,19 +31,26 @@ class LanguageSpinner @JvmOverloads constructor(
         set(value) {
             field = value
             adapter = LanguageArrayAdapter(context, value)
+            selectedLanguage?.let {
+                setLanguage(selectedLanguage)
+            }
         }
 
     var selectedLanguage: String? = null
         set(value) {
             field = value
-            val position = languages.indexOfFirst { it == value }
-            if (selectedItemPosition != position && position != INVALID_INDEX) {
-                setSelection(position)
-            }
+            setLanguage(value)
         }
 
     fun setOnLanguageSelected(listener: (String) -> Unit) {
         languageSelectedListener = listener
+    }
+
+    private fun setLanguage(language: String?) {
+        val position = languages.indexOfFirst { it == language }
+        if (selectedItemPosition != position && position != INVALID_INDEX) {
+            setSelection(position)
+        }
     }
 
     companion object {
