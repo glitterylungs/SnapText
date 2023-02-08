@@ -7,10 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="yellow">#F0C419</color>
-    <color name="text_color">#4D525C</color>
-    <color name="body_text_color">#424852</color>
-    <color name="slider_text_color">#325E85</color>
-    <color name="background">#F6F4EB</color>
-    <color name="list_card_background">#F6F4EB</color>
+    <color name="green">#e0e6c4</color>
+    <color name="text_color">#1b1c17</color>
+    <color name="background">#fefcf4</color>
+    <color name="toolbar_background">#e3e4d3</color>
+    <color name="start_pink">#ffb4ab</color>
+    <color name="start_blue">#a1d0c6</color>
+    <color name="start_green">#b3d34c</color>
 </resources>

@@ -67,13 +67,14 @@
                     android:layout_width="63dp"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/arrow_to_right"
-                    android:src="@drawable/arrow_to_right" />
+                    android:src="@drawable/ic_arrow_to_right" />
 
                 <com.example.snaptext.widgets.LanguageSpinner
                     android:id="@+id/languagesSpinner"
                     style="@style/SpinnerStyle"
                     android:layout_width="@dimen/spinner_width"
                     android:layout_height="40dp"
+                    android:layout_gravity="bottom"
                     android:layout_marginHorizontal="@dimen/spinner_horizontal_margin"
                     android:spinnerMode="dropdown"
                     app:selectedLanguage="@={viewModel.targetLanguage}" />
@@ -91,7 +92,7 @@
                     android:layout_width="79dp"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/arrow_to_left"
-                    android:src="@drawable/arrow_to_left" />
+                    android:src="@drawable/ic_arrow_to_left" />
             </TableRow>
 
         </TableLayout>
@@ -101,7 +102,7 @@
             style="@style/MainButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#F0C419"
+            android:backgroundTint="@color/green"
             android:onClick="@{() -> viewModel.translate()}"
             android:paddingVertical="8dp"
             android:text="@string/translate_button"

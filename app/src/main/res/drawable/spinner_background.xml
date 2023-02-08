@@ -6,7 +6,7 @@
             <item android:gravity="bottom">
                 <shape>
                     <size android:height="1dp" />
-                    <solid android:color="@color/slider_text_color" />
+                    <solid android:color="@color/text_color" />
                 </shape>
             </item>
         </layer-list>

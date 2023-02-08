@@ -2,7 +2,11 @@
 <resources>
     <dimen name="toolbar_title_text_size">22sp</dimen>
     <dimen name="text_to_translate_size">26sp</dimen>
-    <dimen name="language_text_size">34sp</dimen>
+    <dimen name="language_text_size">25sp</dimen>
+    <dimen name="list_label_text_size">13sp</dimen>
+    <dimen name="list_text_size">16sp</dimen>
+    <dimen name="start_text_size">35sp</dimen>
+
     <dimen name="spinner_item_horizontal_padding">5dp</dimen>
     <dimen name="spinner_width">180dp</dimen>
     <dimen name="spinner_horizontal_margin">5dp</dimen>
@@ -12,5 +16,9 @@
     <dimen name="dialog_accept_button_vertical_padding">8dp</dimen>
     <dimen name="dialog_accept_button_horizontal_padding">30dp</dimen>
     <dimen name="dialog_accept_button_vertical_margin">20dp</dimen>
+    <dimen name="dialog_text_bottom_margin">40dp</dimen>
     <dimen name="button_corner_radius">10dp</dimen>
+    <dimen name="list_label_end_margin">20dp</dimen>
+    <dimen name="start_text_top_margin">30dp</dimen>
+
 </resources>

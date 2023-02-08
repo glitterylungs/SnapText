@@ -7,6 +7,7 @@ import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
+import com.example.snaptext.R
 import com.example.snaptext.databinding.FragmentTextDialogBinding
 
 class TextDialogFragment : DialogFragment() {
@@ -20,6 +21,11 @@ class TextDialogFragment : DialogFragment() {
     private val binding get() = _binding!!
 
     var actionListener: ActionListener? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(STYLE_NO_TITLE, R.style.AppTheme_Dialog_MyDialogTheme)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

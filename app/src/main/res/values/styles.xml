@@ -7,44 +7,58 @@
 
     <style name="ToolbarTitleStyle">
         <item name="android:textSize">@dimen/toolbar_title_text_size</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/text_color</item>
-        <item name="android:fontFamily">@font/boogaloo_regular</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
     <style name="MainTextStyle">
         <item name="android:textSize">@dimen/text_to_translate_size</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/body_text_color</item>
-        <item name="android:fontFamily">@font/boogaloo_regular</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
     <style name="LanguageTextStyle">
         <item name="android:textSize">@dimen/language_text_size</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/slider_text_color</item>
-        <item name="android:fontFamily">@font/boogaloo_regular</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
     <style name="MainButtonStyle">
         <item name="android:textSize">@dimen/language_text_size</item>
-        <item name="android:textColor">@color/body_text_color</item>
-        <item name="android:fontFamily">@font/boogaloo_regular</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0.01</item>
     </style>
 
     <style name="SpinnerItemStyle">
         <item name="android:textSize">@dimen/language_text_size</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/slider_text_color</item>
-        <item name="android:fontFamily">@font/boogaloo_regular</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
         <item name="android:gravity">center_vertical</item>
     </style>
 
     <style name="SpinnerStyle">
         <item name="android:background">@drawable/spinner_background</item>
         <item name="android:popupBackground">@color/background</item>
+    </style>
+
+    <style name="LabelStyle">
+        <item name="android:textSize">@dimen/list_label_text_size</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="ListTextStyle">
+        <item name="android:textSize">@dimen/list_text_size</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+
+    <style name="AppTheme.Dialog.MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
     </style>
 
 </resources>
