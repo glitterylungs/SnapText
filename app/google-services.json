@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "476430086685",
+    "project_id": "snaptext-baca9",
+    "storage_bucket": "snaptext-baca9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476430086685:android:a2d1af6b35e10326cb8cf4",
+        "android_client_info": {
+          "package_name": "com.example.snaptext"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476430086685-kialc44pl489ak6farhr3oliuqc2mti8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHS8OOXVaxrQCUGPr3ibNf_wnBjrpMoUU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476430086685-kialc44pl489ak6farhr3oliuqc2mti8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dialog_horizontal_margin"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/dialog_horizontal_padding"
+    tools:context=".ui.dialogs.TextDialogFragment">
+
+    <ImageButton
+        android:id="@+id/dismissButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginVertical="@dimen/dialog_dismiss_button_vertical_margin"
+        android:background="@color/background"
+        android:contentDescription="@string/dismiss"
+        android:src="@drawable/ic_close" />
+
+    <TextView
+        android:id="@+id/firstLabelText"
+        style="@style/LabelStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/firstText"
+        style="@style/MainTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dialog_text_bottom_margin"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/secondLabelText"
+        style="@style/LabelStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/secondText"
+        style="@style/MainTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dialog_text_bottom_margin"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/acceptButton"
+        style="@style/MainButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dialog_accept_button_vertical_margin"
+        android:backgroundTint="@color/green"
+        android:paddingHorizontal="@dimen/dialog_accept_button_horizontal_padding"
+        android:paddingVertical="@dimen/dialog_accept_button_vertical_padding"
+        app:cornerRadius="@dimen/button_corner_radius" />
+</LinearLayout>
