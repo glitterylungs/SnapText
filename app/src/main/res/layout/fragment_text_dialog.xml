@@ -32,6 +32,7 @@
         style="@style/MainTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dialog_text_bottom_margin"
         android:gravity="center" />
 
     <TextView
@@ -56,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/dialog_accept_button_vertical_margin"
-        android:backgroundTint="@color/yellow"
+        android:backgroundTint="@color/green"
         android:paddingHorizontal="@dimen/dialog_accept_button_horizontal_padding"
         android:paddingVertical="@dimen/dialog_accept_button_vertical_padding"
         app:cornerRadius="@dimen/button_corner_radius" />

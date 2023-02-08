@@ -9,7 +9,7 @@
     <string name="alert_dialog_message">It looks like you have turned off permissions required for that feature. It can be enable under app settings.</string>
     <string name="go_to_settings">GO TO SETTINGS</string>
     <string name="cancel">CANCEL</string>
-    <string name="translate_button">Translate</string>
+    <string name="translate_button">TRANSLATE</string>
     <string name="arrow_to_right">Arrow Right</string>
     <string name="arrow_to_left">Arrow Left</string>
     <string name="start_view_image_description">Start View Image</string>
@@ -18,4 +18,7 @@
     <string name="try_again">Please try again.</string>
     <string name="dismiss">Dismiss</string>
     <string name="save">Save</string>
+    <string name="snap">Snap</string>
+    <string name="translate">Translate</string>
+    <string name="travel">Travel</string>
 </resources>
